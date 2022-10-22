@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../screen/Auth/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  //console.log(user);
   return (
     <div>
-      <ul>
+      <ul className="d-flex bg-light p-2">
         <Link to="/">
           <li>Home</li>
         </Link>
@@ -14,6 +17,7 @@ const Navbar = () => {
         <Link to="/user/login">
           <li>Login</li>
         </Link>
+        <Link>{user?.displayName}</Link>
       </ul>
     </div>
   );
